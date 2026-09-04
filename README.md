@@ -1,71 +1,103 @@
-# 🏏 IPL Data Analysis — Python & Power BI
+# 🏏 IPL Data Analysis — PostgreSQL, Python & Power BI
 
-> **End-to-end IPL data analytics project using Python and Power BI to uncover team performance, player statistics, match trends, and key insights from IPL match and ball-by-ball data.**
+> **End-to-end IPL Data Analytics project using PostgreSQL, Python, and Power BI to analyze match and ball-by-ball data, uncover performance trends, and build an interactive business intelligence dashboard.**
 
-![IPL](https://img.shields.io/badge/Domain-Indian%20Premier%20League-blue)
-![Python](https://img.shields.io/badge/Python-Data%20Analysis-yellow?logo=python)
-![Pandas](https://img.shields.io/badge/Pandas-Analysis-150458?logo=pandas)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-Data%20Analysis-3776AB?logo=python\&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas\&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi\&logoColor=black)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter\&logoColor=white)
 
 ---
 
 ## 📌 Project Overview
 
-The **IPL Data Analysis** project analyzes Indian Premier League match-level and ball-by-ball delivery data to identify meaningful patterns in:
+The **IPL Data Analysis** project is an end-to-end data analytics project that uses IPL match-level and ball-by-ball delivery data.
 
-* 🏆 Team performance
-* 👤 Player performance
-* 🏏 Batting statistics
-* 🎯 Bowling statistics
-* 📊 Match outcomes
-* 🥇 Player of the Match trends
-* 🏟️ Venue performance
-* 📅 Season-wise trends
-* ⚡ Toss decisions and their impact
-* 📈 Team win/loss patterns
+The project follows a complete analytics workflow:
 
-The project combines **Python for data cleaning, exploration, and statistical analysis** with **Power BI for interactive visualization and dashboard development**.
+**CSV Data → PostgreSQL → Python → Power BI → Business Insights**
+
+PostgreSQL is used as the **central database** for storing and querying the IPL datasets. Python is used for exploratory data analysis and deeper statistical analysis, while Power BI is used to create an interactive dashboard for data visualization and business insights.
 
 ---
 
-## 🎯 Business Questions
+# 🎯 Project Objectives
 
-This analysis aims to answer questions such as:
+The main objectives of this project are to:
 
-1. Which teams have performed best across IPL seasons?
-2. Which players consistently deliver strong performances?
-3. Who are the top run scorers?
-4. Who are the leading wicket takers?
-5. Which venues host the most matches?
-6. Does winning the toss increase the probability of winning the match?
-7. Which teams perform better while chasing or defending?
-8. Which players have received the most Player of the Match awards?
-9. How has team performance changed across seasons?
-10. What factors appear to influence IPL match outcomes?
+* Analyze IPL match and delivery data
+* Store and manage structured IPL data using PostgreSQL
+* Perform SQL-based data exploration and analysis
+* Clean and transform data using Python
+* Perform Exploratory Data Analysis (EDA)
+* Analyze team and player performance
+* Identify important match and toss trends
+* Build an interactive Power BI dashboard
+* Convert raw sports data into meaningful insights
+
+---
+
+# 🏗️ End-to-End Data Analytics Workflow
+
+```text
+                 IPL Raw CSV Data
+                       │
+                       ▼
+              ┌─────────────────┐
+              │   PostgreSQL    │
+              │    Database     │
+              └────────┬────────┘
+                       │
+                SQL Queries
+                       │
+                       ▼
+              ┌─────────────────┐
+              │     Python      │
+              │ Pandas / NumPy  │
+              │      EDA        │
+              └────────┬────────┘
+                       │
+                Data Analysis
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    Power BI     │
+              │   Data Model    │
+              │ DAX + Dashboard │
+              └────────┬────────┘
+                       │
+                       ▼
+              Business Insights
+```
 
 ---
 
 # 🛠️ Tech Stack
 
-| Technology          | Purpose                       |
-| ------------------- | ----------------------------- |
-| 🐍 Python           | Data analysis & preprocessing |
-| 🐼 Pandas           | Data manipulation             |
-| 🔢 NumPy            | Numerical analysis            |
-| 📓 Jupyter Notebook | Exploratory Data Analysis     |
-| 📊 Power BI         | Interactive dashboard         |
-| 📁 CSV              | Dataset storage               |
+| Technology              | Purpose                                  |
+| ----------------------- | ---------------------------------------- |
+| 🐘 **PostgreSQL**       | Data storage, SQL querying & analysis    |
+| 🐍 **Python**           | Data cleaning, transformation & analysis |
+| 🐼 **Pandas**           | Data manipulation                        |
+| 🔢 **NumPy**            | Numerical analysis                       |
+| 📓 **Jupyter Notebook** | Exploratory Data Analysis                |
+| 📊 **Power BI**         | Dashboard & data visualization           |
+| 📁 **CSV**              | Raw source data                          |
 
 ---
 
-# 📂 Dataset
+# 🐘 PostgreSQL Database
 
-The project uses two primary datasets.
+PostgreSQL is used to store and analyze the IPL datasets before visualization.
 
-### `matches.csv`
+### Database Tables
 
-Contains match-level information such as:
+The project primarily works with:
+
+### `matches`
+
+Contains match-level information including:
 
 * Match ID
 * Season
@@ -78,9 +110,9 @@ Contains match-level information such as:
 * Player of the Match
 * Match result
 
-### `deliveries.csv`
+### `deliveries`
 
-Contains ball-by-ball information such as:
+Contains ball-by-ball information including:
 
 * Match ID
 * Inning
@@ -94,54 +126,55 @@ Contains ball-by-ball information such as:
 * Wickets
 * Dismissal information
 
-Using both datasets allows analysis at both **match level** and **delivery level**.
-
 ---
 
-# 🔄 Project Workflow
+## 🔎 SQL Analysis
 
-```text
-             IPL Raw Data
-                  │
-                  ▼
-        ┌───────────────────┐
-        │   Data Loading    │
-        │     & Cleaning    │
-        └─────────┬─────────┘
-                  │
-                  ▼
-        ┌───────────────────┐
-        │ Exploratory Data  │
-        │      Analysis     │
-        │      (Python)     │
-        └─────────┬─────────┘
-                  │
-                  ▼
-        ┌───────────────────┐
-        │ Statistical &     │
-        │ Performance       │
-        │ Analysis          │
-        └─────────┬─────────┘
-                  │
-          ┌───────┴────────┐
-          ▼                ▼
-      Python EDA        Power BI
-          │                │
-          │                ▼
-          │        Interactive Dashboard
-          │                │
-          └───────┬────────┘
-                  ▼
-            Key Insights
+PostgreSQL is used to answer analytical questions using SQL.
+
+Examples of analysis include:
+
+* Total matches played
+* Matches won by each team
+* Team win percentage
+* Top run scorers
+* Top wicket takers
+* Most Player of the Match awards
+* Toss winner vs match winner
+* Batting first vs chasing performance
+* Venue-wise match statistics
+* Season-wise team performance
+* Player performance analysis
+
+Example SQL analysis:
+
+```sql
+SELECT 
+    winner,
+    COUNT(*) AS matches_won
+FROM matches
+WHERE winner IS NOT NULL
+GROUP BY winner
+ORDER BY matches_won DESC;
 ```
 
 ---
 
-# 📊 Python Analysis
+# 🐍 Python Data Analysis
 
-The Jupyter Notebook performs exploratory data analysis using Python.
+Python is used after database-level analysis for deeper exploratory analysis and visualization.
 
-### Key analysis areas
+### Libraries
+
+```text
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Jupyter Notebook
+```
+
+### Analysis Areas
 
 #### 🏆 Team Analysis
 
@@ -155,8 +188,8 @@ The Jupyter Notebook performs exploratory data analysis using Python.
 
 * Total runs
 * Top run scorers
-* Average runs
-* Strike rate
+* Batting averages
+* Strike rates
 * Boundary analysis
 
 #### 🎯 Bowling Analysis
@@ -164,13 +197,13 @@ The Jupyter Notebook performs exploratory data analysis using Python.
 * Total wickets
 * Leading wicket takers
 * Bowling performance
-* Economy-related analysis
+* Economy analysis
 
 #### 🪙 Toss Analysis
 
 * Toss winner vs match winner
 * Batting first vs chasing
-* Toss decision patterns
+* Toss decision trends
 
 #### 🏟️ Venue Analysis
 
@@ -180,24 +213,43 @@ The Jupyter Notebook performs exploratory data analysis using Python.
 
 ---
 
-# 📈 Power BI Dashboard
+# 📊 Power BI Dashboard
 
-The Power BI dashboard transforms the analyzed IPL data into an interactive visual analytics experience.
+The analyzed IPL data is visualized through an interactive Power BI dashboard.
 
-### Dashboard Highlights
+### Dashboard Features
 
-* 📌 KPI cards for major performance metrics
-* 🏆 Team performance comparison
+* 📌 KPI cards
+* 🏆 Team performance analysis
 * 🏏 Top batsmen
 * 🎯 Top bowlers
 * 🪙 Toss analysis
 * 🏟️ Venue analysis
-* 📅 Season-wise performance
-* 🔎 Interactive filters and slicers
+* 📅 Season-wise analysis
+* 🔎 Interactive slicers
+* 📈 Performance comparisons
+
+### Data Flow into Power BI
+
+```text
+PostgreSQL
+     │
+     ▼
+Power BI
+     │
+     ├── Data Model
+     ├── Relationships
+     ├── DAX Measures
+     ├── KPIs
+     └── Visualizations
+             │
+             ▼
+      Interactive Dashboard
+```
 
 ### Dashboard Preview
 
-> Add your Power BI dashboard screenshot here.
+Add your dashboard screenshot inside the repository:
 
 ```markdown
 ![IPL Power BI Dashboard](images/ipl-dashboard.png)
@@ -205,22 +257,40 @@ The Power BI dashboard transforms the analyzed IPL data into an interactive visu
 
 ---
 
-# 💡 Key Insights
+# 💡 Key Business Questions
 
-The analysis provides insights into:
+The project answers questions such as:
 
-* Team dominance and consistency across seasons
-* High-performing batsmen and bowlers
-* Impact of toss decisions on match outcomes
-* Differences between chasing and defending teams
-* Venue-specific performance patterns
-* Player consistency across matches and seasons
-
-> **Note:** Specific numerical insights should be added here based on the final analysis results from the notebook/dashboard.
+1. Which IPL teams have the highest number of wins?
+2. Which teams have the best win percentage?
+3. Who are the top run scorers?
+4. Who are the leading wicket takers?
+5. Which players have received the most Player of the Match awards?
+6. Does winning the toss increase the probability of winning the match?
+7. Is chasing more successful than batting first?
+8. Which venues have hosted the most IPL matches?
+9. How does team performance change across seasons?
+10. Which players and teams consistently perform well?
 
 ---
 
-# 📁 Project Structure
+# 📈 Key Insights
+
+The analysis focuses on identifying:
+
+* Team dominance and consistency
+* Player performance trends
+* Batting and bowling patterns
+* Toss impact on match results
+* Chasing vs defending performance
+* Venue-specific trends
+* Season-wise performance changes
+
+> **Note:** Add your actual numerical findings here after completing the final SQL/Python/Power BI analysis.
+
+---
+
+# 📂 Project Structure
 
 ```text
 IPL-Data-Analysis/
@@ -229,6 +299,11 @@ IPL-Data-Analysis/
 │
 ├── 📊 matches.csv
 ├── 🏏 deliveries.csv
+│
+├── 🐘 sql/
+│   ├── create_tables.sql
+│   ├── data_analysis.sql
+│   └── player_analysis.sql
 │
 ├── 📈 IPL DASHBOARD ANALAYSIS.pbix
 │
@@ -243,37 +318,72 @@ IPL-Data-Analysis/
 
 # ⚙️ Installation & Setup
 
-### 1. Clone the repository
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
 ```
 
-### 2. Navigate to the project directory
-
 ```powershell
 cd IPL-Data-Analysis
 ```
 
-### 3. Create a virtual environment
+---
+
+## 2️⃣ PostgreSQL Setup
+
+Install **PostgreSQL** and create a database:
+
+```sql
+CREATE DATABASE ipl_analysis;
+```
+
+Connect to the database and create the required tables using the SQL scripts provided in the `sql/` directory.
+
+Example:
+
+```sql
+CREATE TABLE matches (
+    id INT PRIMARY KEY,
+    season INT,
+    date DATE,
+    team1 VARCHAR(100),
+    team2 VARCHAR(100),
+    toss_winner VARCHAR(100),
+    toss_decision VARCHAR(50),
+    winner VARCHAR(100)
+);
+```
+
+Load the IPL CSV data into the appropriate PostgreSQL tables.
+
+> **Important:** Update the database connection details locally. Do not commit passwords or credentials to GitHub.
+
+---
+
+# 🐍 Python Environment Setup
+
+Create a virtual environment:
 
 ```powershell
 python -m venv .venv
 ```
 
-### 4. Activate the virtual environment
+Activate it:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 5. Install dependencies
+Install dependencies:
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-### 6. Open the notebook
+---
+
+# 📓 Run Python Analysis
 
 Open:
 
@@ -283,114 +393,167 @@ IPL_Analysis.ipynb
 
 using **Jupyter Notebook** or **VS Code**.
 
-Run the notebook cells from the project directory so that the CSV files are loaded correctly.
+Run the notebook cells sequentially.
+
+If Python connects directly to PostgreSQL, configure the connection locally using environment variables rather than hardcoding credentials.
+
+Example:
+
+```python
+import pandas as pd
+from sqlalchemy import create_engine
+
+engine = create_engine(
+    "postgresql://username:password@localhost:5432/ipl_analysis"
+)
+
+df = pd.read_sql("SELECT * FROM matches", engine)
+```
 
 ---
 
-# 📦 Requirements
+# 📊 Open Power BI Dashboard
 
-Example dependencies:
+Open:
 
 ```text
-pandas
-numpy
-matplotlib
-seaborn
-jupyter
+IPL DASHBOARD ANALAYSIS.pbix
 ```
 
-Install them using:
+If the dashboard uses PostgreSQL as its data source:
 
-```bash
-pip install -r requirements.txt
+1. Open the `.pbix` file.
+2. Verify the PostgreSQL connection.
+3. Update the local database/server details if required.
+4. Refresh the dataset.
+5. Explore the interactive dashboard.
+
+---
+
+# 🔐 Security
+
+Never upload database credentials to GitHub.
+
+❌ Do not commit:
+
+```text
+username
+password
+API keys
+connection strings containing passwords
+.env files
+```
+
+Use environment variables or a `.env` file locally and add it to `.gitignore`.
+
+Example:
+
+```text
+.env
+.venv/
+__pycache__/
+*.pyc
 ```
 
 ---
 
-# 🚀 How to Use
+# 📊 Skills Demonstrated
 
-### Python Analysis
+## PostgreSQL
 
-1. Open `IPL_Analysis.ipynb`
-2. Run the notebook cells sequentially.
-3. Explore the data cleaning and analysis process.
-4. Review the generated charts and statistics.
+* Database creation
+* Table creation
+* Data loading
+* SQL querying
+* Filtering
+* Aggregation
+* GROUP BY
+* JOIN operations
+* Subqueries
+* Analytical queries
 
-### Power BI Dashboard
+## Python
 
-1. Open `IPL DASHBOARD ANALAYSIS.pbix`
-2. Refresh the dataset if required.
-3. Use the slicers and interactive visuals.
-4. Explore team, player, season, and match-level insights.
-
----
-
-# 📌 Project Objectives
-
-This project demonstrates practical skills in:
-
-* Data Cleaning
+* Pandas
+* NumPy
+* Data cleaning
+* Data transformation
 * Exploratory Data Analysis
-* Data Transformation
-* Statistical Analysis
-* Data Visualization
-* Business Intelligence
-* Dashboard Development
-* Analytical Storytelling
+* Data visualization
+
+## Power BI
+
+* Data connection
+* Data modeling
+* Relationships
+* DAX measures
+* KPI development
+* Interactive visualizations
+* Dashboard design
+* Data storytelling
 
 ---
 
-# 🎓 Skills Demonstrated
-
-### Python
+# 🔄 Complete Project Pipeline
 
 ```text
-Python
- ├── Pandas
- ├── NumPy
- ├── Data Cleaning
- ├── EDA
- └── Data Visualization
-```
-
-### Power BI
-
-```text
-Power BI
- ├── Data Import
- ├── Data Transformation
- ├── Data Modeling
- ├── DAX
- ├── KPI Development
- ├── Interactive Visualizations
- └── Dashboard Design
+       Raw IPL CSV Files
+              │
+              ▼
+       ┌───────────────┐
+       │  PostgreSQL   │
+       │   Database    │
+       └───────┬───────┘
+               │
+          SQL Analysis
+               │
+               ▼
+       ┌───────────────┐
+       │    Python     │
+       │     EDA       │
+       └───────┬───────┘
+               │
+        Data Validation
+               │
+               ▼
+       ┌───────────────┐
+       │   Power BI    │
+       │     DAX       │
+       │   Dashboard   │
+       └───────┬───────┘
+               │
+               ▼
+       Business Insights
 ```
 
 ---
 
-# 🌟 Why This Project?
+# 🚀 Future Improvements
 
-The IPL generates a large amount of structured sports data. This project demonstrates how raw data can be transformed into meaningful insights using a complete analytics workflow:
-
-**Raw Data → Cleaning → Analysis → Visualization → Insights**
-
-The project is designed as a practical demonstration of **Data Analyst skills using Python and Power BI**.
-
----
-
-# 🔮 Future Improvements
-
-Potential improvements include:
-
+* [ ] Add advanced SQL analytics
+* [ ] Build a complete star schema
 * [ ] Add advanced DAX measures
 * [ ] Add player comparison dashboard
-* [ ] Add season-by-season team analysis
-* [ ] Add predictive match analysis
-* [ ] Add win probability analysis
-* [ ] Add advanced batting and bowling metrics
-* [ ] Connect Power BI directly to a database
+* [ ] Add season-by-season analysis
+* [ ] Add advanced batting metrics
+* [ ] Add advanced bowling metrics
+* [ ] Add match win probability
+* [ ] Add predictive analysis
 * [ ] Automate data refresh
-* [ ] Deploy dashboard for public access
+* [ ] Deploy Power BI report
+* [ ] Connect Power BI directly to PostgreSQL
+
+---
+
+# 🎓 What This Project Demonstrates
+
+This project demonstrates an end-to-end **Data Analyst workflow**:
+
+> **Data Collection → Database Management → SQL Analysis → Python EDA → Data Modeling → Power BI → Business Insights**
+
+It showcases practical experience with three important tools used in modern data analytics:
+
+**PostgreSQL + Python + Power BI**
 
 ---
 
@@ -398,12 +561,15 @@ Potential improvements include:
 
 **Sherif**
 
-Aspiring Data Analyst | Python | SQL | Power BI | Data Visualization
+Aspiring Data Analyst
+
+**Skills:**
+`PostgreSQL` • `SQL` • `Python` • `Pandas` • `Power BI` • `DAX` • `Data Visualization` • `Exploratory Data Analysis`
 
 ---
 
-## ⭐ If You Find This Project Useful
+## ⭐ Support
 
-If you found this project interesting or useful, consider giving the repository a **⭐ Star**!
+If you found this project useful or interesting, consider giving the repository a **⭐ Star**.
 
-Your feedback and suggestions are welcome.
+Feedback and suggestions are welcome!
